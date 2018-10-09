@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:textColorHint="@color/black"
+            android:hint="username"
+            android:inputType="textEmailAddress"
+            android:id="@+id/username_login"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:textColorHint="@color/black"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:id="@+id/password_login"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/black"
+            android:layout_margin="15sp"
+            android:text="Login"
+            android:id="@+id/loginbutton"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Not have an account? signUp here"
+            android:layout_margin="15dp"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:id="@+id/textViewSignUp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

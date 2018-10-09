@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Due settlement Details</string>
+    <array name="dept">
+        <item>CSE</item>
+        <item>Aero</item>
+        <item>AGRI</item>
+        <item>Biotech</item>
+        <item>civil</item>
+        <item>Ece</item>
+        <item>EEE</item>
+        <item>E I</item>
+        <item>FT</item>
+        <item>IT</item>
+    </array>
+</resources>

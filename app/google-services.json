@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "196604372235",
+    "firebase_url": "https://due-settlement-details.firebaseio.com",
+    "project_id": "due-settlement-details",
+    "storage_bucket": "due-settlement-details.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196604372235:android:b119f1838c8fa1fa",
+        "android_client_info": {
+          "package_name": "com.example.duesettlementdetails"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196604372235-7a6f6q4v6h5p8pip1mv4qqnfr85krdss.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.duesettlementdetails",
+            "certificate_hash": "daa4f0a27290a75b03c3b01c08d03cc59946b931"
+          }
+        },
+        {
+          "client_id": "196604372235-ool7p6gevoh2n27t70mbm93nvco3nqaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChme68_odb4D0QThhYki0VGg5j408UGdY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196604372235-ool7p6gevoh2n27t70mbm93nvco3nqaq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
