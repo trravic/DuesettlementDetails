@@ -1,30 +1,36 @@
 package com.example.duesettlementdetails;
 
-public class storeStudentDetails {
+import com.google.firebase.database.Exclude;
 
-    String id;
-    String studentName;
-    String RollNo;
-    String book;
-    String fine;
-    String dept;
+import java.io.Serializable;
 
-    public storeStudentDetails(){}
+public class storeStudentDetails implements Serializable {
 
-    public storeStudentDetails(String id , String studentName, String RollNo , String book ,  String fine ,String dept){
 
-        this.id=id;
-        this.studentName=studentName;
-        this.RollNo = RollNo;
-        this.book = book ;
-        this.fine = fine ;
+    private String studentName;
+    private  String rollNo;
+    private  String book;
+    private Double fine;
+    private String dept;
+
+    @Exclude private String id;
+
+    public storeStudentDetails() {
+    }
+
+    public storeStudentDetails(String studentName, String rollNo,String book, double fine ,String dept) {
+
+        this.studentName = studentName;
+        this.rollNo = rollNo;
+        this.book = book;
+        this.fine = fine;
         this.dept = dept;
 
 
     }
 
-    public String getId() {
-        return id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getStudentName() {
@@ -32,14 +38,14 @@ public class storeStudentDetails {
     }
 
     public String getRollNo() {
-        return RollNo;
+        return rollNo;
     }
 
     public String getBook() {
         return book;
     }
 
-    public String getFine() {
+    public Double getFine() {
         return fine;
     }
 
@@ -47,5 +53,7 @@ public class storeStudentDetails {
         return dept;
     }
 
-
+    public String getId() {
+        return id;
+    }
 }

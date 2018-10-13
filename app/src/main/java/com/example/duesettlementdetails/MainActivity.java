@@ -34,13 +34,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
         FirebaseApp.initializeApp(this);
+        mAuth = FirebaseAuth.getInstance();
+
 
         if(mAuth.getCurrentUser() != null){
             finish();
