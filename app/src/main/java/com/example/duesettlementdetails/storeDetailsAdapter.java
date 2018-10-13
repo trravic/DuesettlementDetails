@@ -47,18 +47,14 @@ public class storeDetailsAdapter extends RecyclerView.Adapter<storeDetailsAdapte
 
     }
 
-
-
     @Override
     public int getItemCount() {
         return studentDetailsList.size();
     }
 
-
     class StudentViewHolder extends RecyclerView.ViewHolder {
 
         TextView studName,rollNum,bookName,dept,fine;
-
 
         public StudentViewHolder(View itemView) {
             super(itemView);
