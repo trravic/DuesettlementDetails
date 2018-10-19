@@ -13,8 +13,8 @@ public class storeStudentDetails implements Serializable {
     private  String email;
     private Double fine;
     private String dept;
+    private String id;
 
-    @Exclude private String id;
 
     public storeStudentDetails() {
     }
@@ -35,6 +35,10 @@ public class storeStudentDetails implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+
+
+
+
 
     public String getStudentName() {
         return studentName;
