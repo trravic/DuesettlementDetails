@@ -1,6 +1,7 @@
 package com.example.duesettlementdetails;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
@@ -29,7 +32,7 @@ public class storeDetailsAdapter extends RecyclerView.Adapter<storeDetailsAdapte
     @Override
     public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new StudentViewHolder(
-                LayoutInflater.from(context).inflate(R.layout.profile_activity, parent, false)
+                LayoutInflater.from(context).inflate(R.layout.view_details, parent, false)
         );
     }
 
@@ -40,6 +43,7 @@ public class storeDetailsAdapter extends RecyclerView.Adapter<storeDetailsAdapte
         storeStudentDetails mStoreDetails = studentDetailsList.get(position);
 
         holder.studName.setText(mStoreDetails.getStudentName());
+        holder.email.setText( mStoreDetails.getEmail());
         holder.rollNum.setText(mStoreDetails.getRollNo());
         holder.bookName.setText( mStoreDetails.getBook());
         holder.fine.setText("Fine:" + mStoreDetails.getFine());
@@ -54,16 +58,24 @@ public class storeDetailsAdapter extends RecyclerView.Adapter<storeDetailsAdapte
 
     class StudentViewHolder extends RecyclerView.ViewHolder {
 
-        TextView studName,rollNum,bookName,dept,fine;
+        TextView studName,rollNum,bookName,dept,fine,email;
+
 
         public StudentViewHolder(View itemView) {
             super(itemView);
 
             studName=itemView.findViewById(R.id.studentName_prof);
             rollNum = itemView.findViewById(R.id.rollNumber_prof);
+            email = itemView.findViewById(R.id.email_prof);
             bookName = itemView.findViewById(R.id.bookName_prof);
             fine = itemView.findViewById(R.id.fineAmt_prof);
             dept = itemView.findViewById(R.id.department_prof);
+
         }
+
+
+
+
+
     }
 }

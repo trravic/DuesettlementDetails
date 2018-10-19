@@ -3,6 +3,7 @@ package com.example.duesettlementdetails;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -22,15 +23,12 @@ import java.util.List;
 
 public class profileActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button logOutBtn;
+    private CardView logOutBtn;
     private TextView userTv;
     private FirebaseAuth mFireAuth;
+    private CardView ViewBtn;
+    private CardView payActivity;
 
-    private TextView studentName;
-    private TextView rollNumber;
-    private TextView Department;
-    private TextView bookName;
-    private TextView fineAmt;
 
 
 
@@ -42,17 +40,11 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
-        logOutBtn=(Button)findViewById(R.id.logoutbtn);
+        logOutBtn=(CardView) findViewById(R.id.logoutbtn);
         userTv=(TextView)findViewById(R.id.userProfile);
-
-
-
+        ViewBtn = (CardView) findViewById(R.id.view_details);
+        payActivity = (CardView) findViewById(R.id.pay_Activity);
         mFireAuth=FirebaseAuth.getInstance();
-
-
-
-
-
 
         if(mFireAuth.getCurrentUser() == null)
         {
@@ -60,11 +52,16 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(new Intent(this,LoginActivity.class));
         }
 
+
+        payActivity.setOnClickListener(this);
+
+
         FirebaseUser user=mFireAuth.getCurrentUser();
-        userTv.setText("Welcome "+user.getEmail());
+        String user_detail = user.getEmail();
+        userTv.setText("Welcome Buddy ," + user_detail);
 
         logOutBtn.setOnClickListener(this);
-
+        ViewBtn.setOnClickListener(this);
     }
 
     @Override
@@ -72,11 +69,20 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
         if(view==logOutBtn)
         {
             mFireAuth.signOut();
-
             finish();
-
             startActivity(new Intent(this,LoginActivity.class));
         }
+
+        if(view == payActivity){
+            startActivity(new Intent(this,paymentAmtActivity.class));
+        }
+
+
+        if(view==ViewBtn){
+            startActivity(new Intent(this,studentDetailsRecyclerActivity.class));
+        }
+
+
 
 
     }

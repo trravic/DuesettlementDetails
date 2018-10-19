@@ -12,4 +12,6 @@
         <item>FT</item>
         <item>IT</item>
     </array>
+
+    <string name ="app_description">Hello world , you are in the right place to track your progress and concentrate on your library payment due and to easily transact through online!</string>
 </resources>

@@ -10,7 +10,16 @@
         android:layout_margin="5dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/admin_gradient"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN ACTIVITY"
+            android:layout_gravity="center"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -19,6 +28,7 @@
             android:textColorHint="@color/black"
             android:hint="username"
             android:inputType="textEmailAddress"
+            android:drawableLeft="@drawable/profile"
             android:id="@+id/username_login"/>
 
         <EditText
@@ -27,6 +37,7 @@
             android:layout_margin="15sp"
             android:textColorHint="@color/black"
             android:hint="Password"
+            android:drawableLeft="@drawable/password"
             android:inputType="textPassword"
             android:id="@+id/password_login"/>
 
@@ -36,6 +47,8 @@
             android:textColorHint="@color/black"
             android:layout_margin="15sp"
             android:text="Login"
+            android:background="@drawable/gradient_button"
+            android:drawableRight="@drawable/submit"
             android:id="@+id/loginbutton"/>
 
         <TextView

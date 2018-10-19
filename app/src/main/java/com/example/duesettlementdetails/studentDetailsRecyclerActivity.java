@@ -60,9 +60,6 @@ public class studentDetailsRecyclerActivity extends AppCompatActivity {
 
         dbReference.collection("details").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-
-
-
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
@@ -73,27 +70,17 @@ public class studentDetailsRecyclerActivity extends AppCompatActivity {
 
                         if(!queryDocumentSnapshots.isEmpty()){
 
+                            mProgressBar.setVisibility(View.GONE);
                             //we must have to create empty list so that to store all
                             //details from DocumentsSnapshots
                             List<DocumentSnapshot>  list =  queryDocumentSnapshots.getDocuments();
-
-
-
                             //enhanced for loop because we have to give every index documentSnapShot
-
                             for(DocumentSnapshot d: list){
-
                                 storeStudentDetails sd = d.toObject(storeStudentDetails.class);
                                 studentDetailsList.add(sd);
 
-
                                 Log.d(TAG, "onSuccess: " + sd.toString());
-
-
-
-
                             }
-
                             //to refresh and sync we must have to use notifyDataSetChanged
 
                             mStoreDetailsAdapter.notifyDataSetChanged();

@@ -1,6 +1,7 @@
 package com.example.duesettlementdetails;
 
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +28,9 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
     private Spinner mdeptSpinner;
     private EditText bookEt;
     private EditText fineAmtEt;
+    private EditText emailId;
     private Button saveBtn;
+    private Button ViewBtn;
 
     //google realtime database
    private FirebaseFirestore holddatabaseReference;
@@ -47,12 +50,15 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
         mdeptSpinner = (Spinner) findViewById(R.id.deptSpinner);
         bookEt = (EditText) findViewById(R.id.bookName);
         fineAmtEt = (EditText) findViewById(R.id.fineAmt);
+        emailId = (EditText) findViewById(R.id.emailId);
         saveBtn = (Button) findViewById(R.id.save_details);
+        ViewBtn = (Button) findViewById(R.id.admin_view_prod);
 
         saveBtn.setOnClickListener(this);
+        ViewBtn.setOnClickListener(this);
     }
 
-    private boolean hasValidationErrors(String name, String rollNo, String book, String fine ,String dept) {
+    private boolean hasValidationErrors(String name, String rollNo, String book, String fine ,String dept,String email) {
 
         if (name.isEmpty()) {
             studentEt.setError("Name required");
@@ -75,6 +81,11 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
             fineAmtEt.requestFocus();
             return true;
         }
+        if (email.isEmpty()) {
+            emailId.setError("Name required");
+            emailId.requestFocus();
+            return true;
+        }
 
 
         return false;
@@ -86,10 +97,10 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
         String rollNo = rollEt.getText().toString().trim();
         String book = bookEt.getText().toString().trim();
         String fine = fineAmtEt.getText().toString().trim();
-
+        String email = emailId.getText().toString().trim();
         String dept = mdeptSpinner.getSelectedItem().toString();
 
-        if (!hasValidationErrors(name, rollNo, book, fine ,dept)) {
+        if (!hasValidationErrors(name, rollNo, book, fine ,dept,email)) {
 
             CollectionReference dbProducts = holddatabaseReference.collection("details");
 
@@ -98,8 +109,8 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
                     rollNo,
                     book,
                     Double.parseDouble(fine),
-                    dept
-
+                    dept,
+                    email
             );
 
             dbProducts.add(product)
@@ -120,8 +131,14 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view == saveBtn){
-            saveDetails();
+
+        switch(view.getId()){
+            case R.id.save_details:
+                saveDetails();
+                break;
+            case R.id.admin_view_prod:
+                startActivity(new Intent(this, studentDetailsRecyclerActivity.class));
+                break;
         }
     }
 }

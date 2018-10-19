@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //declare all the buttons and views
     private EditText usernameEditText;
     private EditText passwordEditText;
-    private TextView userSignInTV;
+    private Button userSignInTV;
     private Button signUpButton;
     private ProgressDialog progressDialog;
-    private TextView adminTextView;
+    private Button adminTextView;
     //google firebasse auth
     private FirebaseAuth mAuth;
 
@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         passwordEditText = (EditText) findViewById(R.id.password);
 
-        userSignInTV = (TextView) findViewById(R.id.textViewSignIn);
+        userSignInTV = (Button) findViewById(R.id.textViewSignIn);
 
         signUpButton = (Button) findViewById(R.id.signUpbutton);
 
-        adminTextView = (TextView) findViewById(R.id.adminTv);
+        adminTextView = (Button) findViewById(R.id.adminTv);
 
         progressDialog = new ProgressDialog(this);
 

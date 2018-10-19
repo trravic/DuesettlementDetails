@@ -10,6 +10,7 @@ public class storeStudentDetails implements Serializable {
     private String studentName;
     private  String rollNo;
     private  String book;
+    private  String email;
     private Double fine;
     private String dept;
 
@@ -18,13 +19,15 @@ public class storeStudentDetails implements Serializable {
     public storeStudentDetails() {
     }
 
-    public storeStudentDetails(String studentName, String rollNo,String book, double fine ,String dept) {
+    public storeStudentDetails(String studentName, String rollNo,String book, double fine ,String dept,String email) {
+
 
         this.studentName = studentName;
         this.rollNo = rollNo;
         this.book = book;
         this.fine = fine;
         this.dept = dept;
+        this.email = email;
 
 
     }
@@ -35,6 +38,10 @@ public class storeStudentDetails implements Serializable {
 
     public String getStudentName() {
         return studentName;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getRollNo() {

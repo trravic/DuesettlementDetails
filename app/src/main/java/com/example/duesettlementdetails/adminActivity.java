@@ -15,6 +15,7 @@ public class adminActivity extends AppCompatActivity implements View.OnClickList
     private EditText login_passwordEditText;
     private Button LoginButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,7 @@ public class adminActivity extends AppCompatActivity implements View.OnClickList
 
 
         LoginButton.setOnClickListener(this);
+
 
 
 

@@ -1,77 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:padding="15dp"
-        android:layout_margin="15dp"
-        android:text="NO DUE ONLINE SETTLEMENT SYSTEM"/>
-
-
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+   >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical">
+        android:background="@drawable/gradient_1"
+        android:orientation="vertical"
+        android:padding="35dp">
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:text="Payment settlement"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:text="@string/app_description"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center">
+
+            <Button
+                android:layout_margin="10dp"
+                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:id="@+id/textViewSignIn"
+                android:background="@drawable/gradient_button"/>
+
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:id="@+id/adminTv"
+                android:text="ADMIN LOGIN"
+                android:background="@drawable/button_style"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:text="REGISTER ACTIVITY"
+            android:text="REGISTER NEW USER"
             android:layout_gravity="center"/>
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="335dp"
             android:layout_height="wrap_content"
             android:layout_margin="15sp"
             android:textColorHint="@color/black"
             android:hint="username"
+            android:drawableLeft="@drawable/profile"
+            android:inputType="textEmailAddress"
             android:id="@+id/username"/>
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="335dp"
             android:layout_height="wrap_content"
             android:layout_margin="15sp"
             android:textColorHint="@color/black"
             android:hint="Password"
+            android:inputType="textPassword"
+            android:drawableLeft="@drawable/password"
             android:id="@+id/password"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:layout_margin="15sp"
             android:text="SIGN UP"
+            android:drawableRight="@drawable/submit"
+            android:background="@drawable/gradient_button"
             android:id="@+id/signUpbutton"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Already user? login here"
-            android:layout_margin="15dp"
-            android:textSize="15sp"
-            android:textStyle="italic"
-            android:id="@+id/textViewSignIn"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:id="@+id/adminTv"
-            android:text="ADMIN? LOG IN HERE"
-            android:layout_gravity="center"/>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
