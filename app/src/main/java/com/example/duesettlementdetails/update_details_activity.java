@@ -1,27 +1,18 @@
 package com.example.duesettlementdetails;
 
-import android.app.Application;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class adminProfile extends AppCompatActivity implements View.OnClickListener {
+public class update_details_activity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText studentEt;
     private EditText rollEt;
@@ -29,22 +20,21 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
     private EditText bookEt;
     private EditText fineAmtEt;
     private EditText emailId;
-    private Button saveBtn;
-    private Button ViewBtn;
     private Button updateBtn;
+    private int selectedSpinner;
 
-    //google realtime database
-   private FirebaseFirestore holddatabaseReference;
+
+    private FirebaseFirestore holddatabaseReference;
+
+    //again we have to update and we must have to store
+    private storeStudentDetails mStoreDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin_profile);
-
-        //reference will be acting as the root node
-
-
+        setContentView(R.layout.update_details_admin);
         holddatabaseReference = FirebaseFirestore.getInstance();
+        mStoreDetails = (storeStudentDetails) getIntent().getSerializableExtra("details");
 
         studentEt = (EditText) findViewById(R.id.studentName);
         rollEt = (EditText) findViewById(R.id.rollNumber);
@@ -52,12 +42,28 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
         bookEt = (EditText) findViewById(R.id.bookName);
         fineAmtEt = (EditText) findViewById(R.id.fineAmt);
         emailId = (EditText) findViewById(R.id.emailId);
-        saveBtn = (Button) findViewById(R.id.save_details);
-        ViewBtn = (Button) findViewById(R.id.admin_view_prod);
-        updateBtn = (Button) findViewById(R.id.edit_prod);
-        saveBtn.setOnClickListener(this);
-        ViewBtn.setOnClickListener(this);
+
+        updateBtn = (Button) findViewById(R.id.update_details);
+
+        studentEt.setText(mStoreDetails.getStudentName());
+        rollEt.setText(mStoreDetails.getRollNo());
+        // mdeptSpinner.setSelected(mStoreDetails.getDept());
+       selectedSpinner = mdeptSpinner.getSelectedItemPosition();
+       mdeptSpinner.setSelection(selectedSpinner);
+        bookEt.setText(String.valueOf(mStoreDetails.getBook()));
+        fineAmtEt.setText(String.valueOf(mStoreDetails.getFine()));
+        emailId.setText(mStoreDetails.getEmail());
+
         updateBtn.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.update_details:
+                updateDetails();
+        }
     }
 
     private boolean hasValidationErrors(String name, String rollNo, String book, String fine ,String dept,String email) {
@@ -93,7 +99,8 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    private void saveDetails() {
+    private void updateDetails() {
+
 
         String name = studentEt.getText().toString().trim();
         String rollNo = rollEt.getText().toString().trim();
@@ -102,11 +109,9 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
         String email = emailId.getText().toString().trim();
         String dept = mdeptSpinner.getSelectedItem().toString();
 
-        if (!hasValidationErrors(name, rollNo, book, fine ,dept,email)) {
+        if (!hasValidationErrors(name, rollNo, book, fine, dept, email)) {
 
-            CollectionReference dbProducts = holddatabaseReference.collection("details");
-
-            storeStudentDetails product = new storeStudentDetails(
+            storeStudentDetails StoreDetails = new storeStudentDetails(
                     name,
                     rollNo,
                     book,
@@ -114,36 +119,24 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
                     dept,
                     email
             );
+           holddatabaseReference.collection("details").document(StoreDetails.getId())
+                .update("name",StoreDetails.getStudentName(),
+                                "book",StoreDetails.getBook(),
+                                "dept",StoreDetails.getDept(),
+                                "email",StoreDetails.getEmail(),
+                                    "rollNo",StoreDetails.getRollNo(),
+                                            "fine",StoreDetails.getFine()
+                )
+                   .addOnSuccessListener(new OnSuccessListener<Void>() {
+                       @Override
+                       public void onSuccess(Void aVoid) {
+                           Toast.makeText(update_details_activity.this,"details updated!",Toast.LENGTH_SHORT).show();
+                       }
+                   });
 
-            dbProducts.add(product)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(adminProfile.this, "Successfully Added", Toast.LENGTH_LONG).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(adminProfile.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
-        }
-    }
 
-    @Override
-    public void onClick(View view) {
-
-        switch(view.getId()){
-            case R.id.save_details:
-                saveDetails();
-                break;
-            case R.id.admin_view_prod:
-                startActivity(new Intent(this, studentDetailsRecyclerActivity.class));
-                break;
-            case R.id.edit_prod:
-                    startActivity(new Intent(this,adminDetailsRecyclerActivity.class));
 
         }
     }
 }
+

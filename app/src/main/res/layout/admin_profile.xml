@@ -64,5 +64,11 @@
             android:layout_margin="15sp"
             android:text="View the products"
             android:id="@+id/admin_view_prod"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/black"
+            android:text="Edit the details"
+            android:id="@+id/edit_prod"/>
     </LinearLayout>
 </RelativeLayout>

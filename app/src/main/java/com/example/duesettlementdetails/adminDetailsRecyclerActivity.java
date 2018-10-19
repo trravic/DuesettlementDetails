@@ -1,6 +1,5 @@
 package com.example.duesettlementdetails;
 
-import android.app.Application;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,13 +19,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class studentDetailsRecyclerActivity extends AppCompatActivity {
-
-    //recyclerview  to set the details for UI in the student profile activity
+public class adminDetailsRecyclerActivity extends AppCompatActivity
+{
 
     private RecyclerView mRecyclerView;
-
-    private storeDetailsAdapter mStoreDetailsAdapter;
+    private adminDetailsAdapter mAdminDetailsAdapter;
 
     private List<storeStudentDetails> studentDetailsList;
 
@@ -50,9 +47,9 @@ public class studentDetailsRecyclerActivity extends AppCompatActivity {
 
         studentDetailsList = new ArrayList<>();
 
-        mStoreDetailsAdapter = new storeDetailsAdapter(this,studentDetailsList);
+        mAdminDetailsAdapter = new adminDetailsAdapter(this,studentDetailsList);
 
-        mRecyclerView.setAdapter(mStoreDetailsAdapter);
+        mRecyclerView.setAdapter(mAdminDetailsAdapter);
 
 
 
@@ -84,7 +81,7 @@ public class studentDetailsRecyclerActivity extends AppCompatActivity {
                             }
                             //to refresh and sync we must have to use notifyDataSetChanged
 
-                            mStoreDetailsAdapter.notifyDataSetChanged();
+                            mAdminDetailsAdapter.notifyDataSetChanged();
                         }
                     }
                 })  .addOnFailureListener(new OnFailureListener() {
@@ -93,5 +90,7 @@ public class studentDetailsRecyclerActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();
             }
         });
+
+
     }
 }
