@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -30,8 +31,8 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
     private EditText fineAmtEt;
     private EditText emailId;
     private Button saveBtn;
-    private Button ViewBtn;
-    private Button updateBtn;
+    private CardView ViewBtn;
+    private CardView updateBtn;
 
     //google realtime database
    private FirebaseFirestore holddatabaseReference;
@@ -53,11 +54,12 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
         fineAmtEt = (EditText) findViewById(R.id.fineAmt);
         emailId = (EditText) findViewById(R.id.emailId);
         saveBtn = (Button) findViewById(R.id.save_details);
-        ViewBtn = (Button) findViewById(R.id.admin_view_prod);
-        updateBtn = (Button) findViewById(R.id.edit_prod);
+        ViewBtn = (CardView) findViewById(R.id.admin_view_prod);
+        updateBtn = (CardView) findViewById(R.id.edit_prod);
         saveBtn.setOnClickListener(this);
         ViewBtn.setOnClickListener(this);
         updateBtn.setOnClickListener(this);
+
     }
 
     private boolean hasValidationErrors(String name, String rollNo, String book, String fine ,String dept,String email) {

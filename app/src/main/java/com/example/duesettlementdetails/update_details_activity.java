@@ -1,7 +1,11 @@
 package com.example.duesettlementdetails;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +24,8 @@ public class update_details_activity extends AppCompatActivity implements View.O
     private EditText bookEt;
     private EditText fineAmtEt;
     private EditText emailId;
-    private Button updateBtn;
+    private CardView updateBtn;
+    private CardView deleteBtn;
     private int selectedSpinner;
 
 
@@ -41,9 +46,10 @@ public class update_details_activity extends AppCompatActivity implements View.O
         mdeptSpinner = (Spinner) findViewById(R.id.deptSpinner);
         bookEt = (EditText) findViewById(R.id.bookName);
         fineAmtEt = (EditText) findViewById(R.id.fineAmt);
+        deleteBtn = (CardView) findViewById(R.id.delete_btn);
         emailId = (EditText) findViewById(R.id.emailId);
 
-        updateBtn = (Button) findViewById(R.id.update_details);
+        updateBtn = (CardView) findViewById(R.id.update_details);
 
         studentEt.setText(mStoreDetails.getStudentName());
         rollEt.setText(mStoreDetails.getRollNo());
@@ -55,6 +61,7 @@ public class update_details_activity extends AppCompatActivity implements View.O
         emailId.setText(mStoreDetails.getEmail());
 
         updateBtn.setOnClickListener(this);
+        deleteBtn.setOnClickListener(this);
 
     }
 
@@ -63,6 +70,28 @@ public class update_details_activity extends AppCompatActivity implements View.O
         switch (view.getId()) {
             case R.id.update_details:
                 updateDetails();
+                break;
+            case R.id.delete_btn:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Are you sure want to delete this data ?") ;
+                builder.setMessage("on deleting the data it will be lost permanently");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                            deleteProduct();
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                         dialogInterface.cancel();
+                         startActivity(new Intent(update_details_activity.this,adminDetailsRecyclerActivity.class));
+                    }
+                });
+
+                AlertDialog ad = builder.create();
+                ad.show();
         }
     }
 
@@ -135,6 +164,19 @@ public class update_details_activity extends AppCompatActivity implements View.O
                    });
 
         }
+    }
+
+    private void deleteProduct(){
+        holddatabaseReference.collection("details").document(mStoreDetails.getId())
+                        .delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(update_details_activity.this,"deleted"+mStoreDetails.getStudentName(),Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
     }
 }
 
