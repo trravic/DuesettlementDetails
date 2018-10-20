@@ -119,8 +119,8 @@ public class update_details_activity extends AppCompatActivity implements View.O
                     dept,
                     email
             );
-           holddatabaseReference.collection("details").document(StoreDetails.getId())
-                .update("name",StoreDetails.getStudentName(),
+           holddatabaseReference.collection("details").document(mStoreDetails.getId())
+                .update("studentName",StoreDetails.getStudentName(),
                                 "book",StoreDetails.getBook(),
                                 "dept",StoreDetails.getDept(),
                                 "email",StoreDetails.getEmail(),
@@ -133,8 +133,6 @@ public class update_details_activity extends AppCompatActivity implements View.O
                            Toast.makeText(update_details_activity.this,"details updated!",Toast.LENGTH_SHORT).show();
                        }
                    });
-
-
 
         }
     }
