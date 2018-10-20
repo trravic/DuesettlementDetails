@@ -60,8 +60,6 @@ public class adminDetailsRecyclerActivity extends AppCompatActivity
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-
                         //we must have to hide the progress bar when the data gets loaded
 
                         //here queryDocumentsSnapshot will hold all the "details" which is your collection in firestore
@@ -75,6 +73,7 @@ public class adminDetailsRecyclerActivity extends AppCompatActivity
                             //enhanced for loop because we have to give every index documentSnapShot
                             for(DocumentSnapshot d: list){
                                 storeStudentDetails sd = d.toObject(storeStudentDetails.class);
+                                sd.setId(d.getId());
                                 studentDetailsList.add(sd);
 
                                 Log.d(TAG, "onSuccess: " + sd.toString());
@@ -90,7 +89,5 @@ public class adminDetailsRecyclerActivity extends AppCompatActivity
                 Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();
             }
         });
-
-
     }
 }

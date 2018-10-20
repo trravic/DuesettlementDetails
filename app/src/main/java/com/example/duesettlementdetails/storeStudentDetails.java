@@ -13,7 +13,7 @@ public class storeStudentDetails implements Serializable {
     private  String email;
     private Double fine;
     private String dept;
-    private String id;
+    @Exclude private String id;
 
 
     public storeStudentDetails() {
