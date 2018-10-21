@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -29,6 +30,9 @@ public class paymentAmtActivity extends AppCompatActivity implements View.OnClic
 
     private EditText editTextAmount;
 
+    private storeStudentDetails mStoreDetails;
+
+    private FirebaseFirestore holddatabaseReference;
     //Payment Amount
     private String paymentAmount;
 
@@ -51,6 +55,9 @@ public class paymentAmtActivity extends AppCompatActivity implements View.OnClic
 
         buttonPay = (Button) findViewById(R.id.buttonPay);
         editTextAmount = (EditText) findViewById(R.id.editTextAmount);
+
+        holddatabaseReference = FirebaseFirestore.getInstance();
+        mStoreDetails = (storeStudentDetails) getIntent().getSerializableExtra("details");
 
         buttonPay.setOnClickListener(this);
 
@@ -158,6 +165,4 @@ public class paymentAmtActivity extends AppCompatActivity implements View.OnClic
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-
-
 }
