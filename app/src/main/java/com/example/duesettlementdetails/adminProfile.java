@@ -141,7 +141,7 @@ public class adminProfile extends AppCompatActivity implements View.OnClickListe
                 saveDetails();
                 break;
             case R.id.admin_view_prod:
-                startActivity(new Intent(this, studentDetailsRecyclerActivity.class));
+                startActivity(new Intent(this, adminDetailsRecyclerActivity.class));
                 break;
             case R.id.edit_prod:
                     startActivity(new Intent(this,adminDetailsRecyclerActivity.class));

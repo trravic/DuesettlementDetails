@@ -2,6 +2,7 @@ package com.example.duesettlementdetails;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class update_details_activity extends AppCompatActivity implements View.OnClickListener {
@@ -26,6 +28,7 @@ public class update_details_activity extends AppCompatActivity implements View.O
     private EditText emailId;
     private CardView updateBtn;
     private CardView deleteBtn;
+
     private int selectedSpinner;
 
 
@@ -62,7 +65,6 @@ public class update_details_activity extends AppCompatActivity implements View.O
 
         updateBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
-
     }
 
     @Override
@@ -92,6 +94,8 @@ public class update_details_activity extends AppCompatActivity implements View.O
 
                 AlertDialog ad = builder.create();
                 ad.show();
+
+
         }
     }
 
@@ -160,6 +164,7 @@ public class update_details_activity extends AppCompatActivity implements View.O
                        @Override
                        public void onSuccess(Void aVoid) {
                            Toast.makeText(update_details_activity.this,"details updated!",Toast.LENGTH_SHORT).show();
+                           startActivity(new Intent(update_details_activity.this,adminDetailsRecyclerActivity.class));
                        }
                    });
 
@@ -173,10 +178,10 @@ public class update_details_activity extends AppCompatActivity implements View.O
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(update_details_activity.this,"deleted"+mStoreDetails.getStudentName(),Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(update_details_activity.this,adminDetailsRecyclerActivity.class));
                             }
                         });
-
-
     }
+
 }
 
