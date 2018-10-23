@@ -26,6 +26,7 @@
         <activity android:name=".ConfirmationActivity"/>
         <activity android:name=".adminDetailsRecyclerActivity"/>
         <activity android:name=".update_details_activity"/>
+        <activity android:name=".profileDistinctRecyclerActivity"/>
     </application>
 
 

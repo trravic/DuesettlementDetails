@@ -1,6 +1,5 @@
 package com.example.duesettlementdetails;
 
-import android.app.Application;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,13 +19,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class studentDetailsRecyclerActivity extends AppCompatActivity {
-
-    //recyclerview  to set the details for UI in the student profile activity
+public class profileDistinctRecyclerActivity extends AppCompatActivity
+{
 
     private RecyclerView mRecyclerView;
-
-    private storeDetailsAdapter mStoreDetailsAdapter;
+    private profileDistinctAdapter mProfileDetailsAdapter;
 
     private List<storeStudentDetails> studentDetailsList;
 
@@ -50,9 +47,9 @@ public class studentDetailsRecyclerActivity extends AppCompatActivity {
 
         studentDetailsList = new ArrayList<>();
 
-        mStoreDetailsAdapter = new storeDetailsAdapter(this,studentDetailsList);
+        mProfileDetailsAdapter = new profileDistinctAdapter(this,studentDetailsList);
 
-        mRecyclerView.setAdapter(mStoreDetailsAdapter);
+        mRecyclerView.setAdapter(mProfileDetailsAdapter);
 
 
 
@@ -63,8 +60,6 @@ public class studentDetailsRecyclerActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-
                         //we must have to hide the progress bar when the data gets loaded
 
                         //here queryDocumentsSnapshot will hold all the "details" which is your collection in firestore
@@ -78,18 +73,17 @@ public class studentDetailsRecyclerActivity extends AppCompatActivity {
                             //enhanced for loop because we have to give every index documentSnapShot
                             for(DocumentSnapshot d: list){
                                 storeStudentDetails sd = d.toObject(storeStudentDetails.class);
-
+                                sd.setId(d.getId());
                                 studentDetailsList.add(sd);
 
                                 Log.d(TAG, "onSuccess: " + sd.toString());
                             }
                             //to refresh and sync we must have to use notifyDataSetChanged
 
-                            mStoreDetailsAdapter.notifyDataSetChanged();
+                            mProfileDetailsAdapter.notifyDataSetChanged();
                         }
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
+                })  .addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();

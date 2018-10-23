@@ -28,6 +28,7 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
     private FirebaseAuth mFireAuth;
     private CardView ViewBtn;
     private CardView payActivity;
+    private CardView viewMyDetails;
 
 
 
@@ -44,6 +45,7 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
         userTv=(TextView)findViewById(R.id.userProfile);
         ViewBtn = (CardView) findViewById(R.id.view_details);
         payActivity = (CardView) findViewById(R.id.pay_Activity);
+       // viewMyDetails = (CardView)findViewById(R.id.view_my_details);
         mFireAuth=FirebaseAuth.getInstance();
 
         if(mFireAuth.getCurrentUser() == null)
@@ -54,9 +56,11 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
 
 
         payActivity.setOnClickListener(this);
+ //        viewMyDetails.setOnClickListener(this);
 
 
         FirebaseUser user=mFireAuth.getCurrentUser();
+
         String user_detail = user.getEmail();
         userTv.setText("Welcome Buddy ," + user_detail);
 
@@ -80,6 +84,10 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
 
         if(view==ViewBtn){
             startActivity(new Intent(this,studentDetailsRecyclerActivity.class));
+        }
+
+        if(view == viewMyDetails){
+            startActivity(new Intent(this,profileDistinctRecyclerActivity.class));
         }
 
 
