@@ -78,6 +78,7 @@ public class studentDetailsRecyclerActivity extends AppCompatActivity {
                             //enhanced for loop because we have to give every index documentSnapShot
                             for(DocumentSnapshot d: list){
                                 storeStudentDetails sd = d.toObject(storeStudentDetails.class);
+
                                 studentDetailsList.add(sd);
 
                                 Log.d(TAG, "onSuccess: " + sd.toString());
@@ -87,7 +88,8 @@ public class studentDetailsRecyclerActivity extends AppCompatActivity {
                             mStoreDetailsAdapter.notifyDataSetChanged();
                         }
                     }
-                })  .addOnFailureListener(new OnFailureListener() {
+                })
+                .addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getApplicationContext(), "Error getting data!!!", Toast.LENGTH_LONG).show();
