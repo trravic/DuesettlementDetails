@@ -4,9 +4,9 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_trending_up_black_24dp"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -26,7 +26,7 @@
         <activity android:name=".ConfirmationActivity"/>
         <activity android:name=".adminDetailsRecyclerActivity"/>
         <activity android:name=".update_details_activity"/>
-        <activity android:name=".profileDistinctRecyclerActivity"/>
+        <activity android:name =".viewMyDetails"/>
     </application>
 
 

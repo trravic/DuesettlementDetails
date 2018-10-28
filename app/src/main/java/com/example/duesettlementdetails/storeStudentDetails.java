@@ -13,7 +13,7 @@ public class storeStudentDetails implements Serializable {
     private  String email;
     private Double fine;
     private String dept;
-    @Exclude private String id;
+    private String id;
 
 
     public storeStudentDetails() {
@@ -44,6 +44,10 @@ public class storeStudentDetails implements Serializable {
         return studentName;
     }
 
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -66,5 +70,25 @@ public class storeStudentDetails implements Serializable {
 
     public String getId() {
         return id;
+    }
+
+    public void setRollNo(String rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public void setBook(String book) {
+        this.book = book;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setFine(Double fine) {
+        this.fine = fine;
+    }
+
+    public void setDept(String dept) {
+        this.dept = dept;
     }
 }

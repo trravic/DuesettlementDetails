@@ -61,7 +61,7 @@ public class paymentAmtActivity extends AppCompatActivity implements View.OnClic
 
         buttonPay.setOnClickListener(this);
 
-        //here paypal service is innerclass
+        // here paypal service is innerclass
 
         Intent intent = new Intent(this, PayPalService.class);
 
@@ -139,12 +139,10 @@ public class paymentAmtActivity extends AppCompatActivity implements View.OnClic
                 }
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 Log.i("paymentExample", "The user canceled.");
-            } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
+            } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
+            {
                 Log.i("paymentExample", "An invalid Payment or PayPalConfiguration was submitted. Please see the docs.");
             }
         }
     }
-
-
-
 }
