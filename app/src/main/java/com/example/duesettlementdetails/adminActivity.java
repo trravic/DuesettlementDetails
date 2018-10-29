@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class adminActivity extends AppCompatActivity implements View.OnClickListener {
+public class adminActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText login_uname_EditText;
     private EditText login_passwordEditText;

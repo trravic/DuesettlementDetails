@@ -20,7 +20,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class studentDetailsRecyclerActivity extends AppCompatActivity {
+public class studentDetailsRecyclerActivity extends BaseActivity {
 
     //recyclerview  to set the details for UI in the student profile activity
 

@@ -23,7 +23,7 @@ import org.json.JSONException;
 
 import java.math.BigDecimal;
 
-public class paymentAmtActivity extends AppCompatActivity implements View.OnClickListener {
+public class paymentAmtActivity extends BaseActivity implements View.OnClickListener {
 
     //The views
     private Button buttonPay;
