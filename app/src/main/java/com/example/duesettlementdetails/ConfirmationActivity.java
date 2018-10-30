@@ -9,7 +9,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ConfirmationActivity extends AppCompatActivity {
+public class ConfirmationActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

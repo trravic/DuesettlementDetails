@@ -21,7 +21,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class profileActivity extends AppCompatActivity implements View.OnClickListener {
+public class profileActivity extends BaseActivity implements View.OnClickListener {
 
     private CardView logOutBtn;
     private TextView userTv;

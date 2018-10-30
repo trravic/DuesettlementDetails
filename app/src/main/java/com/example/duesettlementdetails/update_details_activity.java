@@ -18,7 +18,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class update_details_activity extends AppCompatActivity implements View.OnClickListener {
+public class update_details_activity extends BaseActivity implements View.OnClickListener {
 
     private EditText studentEt;
     private EditText rollEt;
