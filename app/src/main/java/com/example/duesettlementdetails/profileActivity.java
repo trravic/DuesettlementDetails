@@ -50,8 +50,8 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
 
         if(mFireAuth.getCurrentUser() == null)
         {
-            finish();
             startActivity(new Intent(this,LoginActivity.class));
+            finish();
         }
 
 
@@ -73,8 +73,8 @@ public class profileActivity extends AppCompatActivity implements View.OnClickLi
         if(view==logOutBtn)
         {
             mFireAuth.signOut();
-            finish();
             startActivity(new Intent(this,LoginActivity.class));
+            finish();
         }
 
         if(view == payActivity){

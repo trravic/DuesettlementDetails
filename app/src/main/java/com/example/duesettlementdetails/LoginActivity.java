@@ -50,10 +50,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
 
         if(mAuth.getCurrentUser() != null){
-            //close this activity
-            finish();
             //opening profile activity
             startActivity(new Intent(getApplicationContext(), profileActivity.class));
+            finish();
         }
 
         LoginButton.setOnClickListener(this);
@@ -80,8 +79,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
                 if(task.isSuccessful()){
-                   finish();
                    startActivity(new Intent(getApplicationContext(),profileActivity.class));
+                    finish();
                 }
             }
         });
@@ -95,8 +94,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
 
         if(view == login_userSignUp_TV){
-            finish();
             startActivity(new Intent(this, MainActivity.class));
+            finish();
         }
     }
 }

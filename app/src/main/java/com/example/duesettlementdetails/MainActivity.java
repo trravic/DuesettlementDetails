@@ -48,9 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         if(mAuth.getCurrentUser() != null){
-            finish();
-
             startActivity(new Intent(getApplicationContext(),profileActivity.class));
+            finish();
         }
         usernameEditText = (EditText) findViewById(R.id.username);
 
@@ -99,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(task.isSuccessful()){
                     Toast.makeText(MainActivity.this,"you have succesfully registered!",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), profileActivity.class));
+                    finish();
                 }
                 else{
                     Toast.makeText(MainActivity.this,"our servers are busy try again!",Toast.LENGTH_SHORT).show();
@@ -120,10 +120,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(view == userSignInTV){
             startActivity(new Intent(this,LoginActivity.class));
+            finish();
         }
 
         if(view == adminTextView){
             startActivity(new Intent(this,adminActivity.class));
+            finish();
         }
 
 

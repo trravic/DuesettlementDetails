@@ -55,6 +55,7 @@ public class adminActivity extends AppCompatActivity implements View.OnClickList
             if(storeUserName.equals(checkUser)&& storepwd.equals(checkpwd)) {
                 Toast.makeText(this,"success!",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), adminProfile.class));
+                finish();
             }
             else {
                 Toast.makeText(this,"Invalid details",Toast.LENGTH_SHORT).show();

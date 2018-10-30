@@ -183,5 +183,10 @@ public class update_details_activity extends AppCompatActivity implements View.O
                         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
 
