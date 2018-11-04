@@ -1,7 +1,5 @@
 package com.example.duesettlementdetails;
 
-import com.google.firebase.database.Exclude;
-
 import java.io.Serializable;
 
 public class storeStudentDetails implements Serializable {
@@ -14,7 +12,7 @@ public class storeStudentDetails implements Serializable {
     private Double fine;
     private String dept;
     private String id;
-
+    private String convert_fine;
 
     public storeStudentDetails() {
     }
@@ -37,15 +35,18 @@ public class storeStudentDetails implements Serializable {
     }
 
 
-
+    public String getConvert_fine(){
+        return String.valueOf(fine);
+    }
 
 
     public String getStudentName() {
         return studentName;
     }
 
-    public void setStudentName(String studentName) {
+    public String setStudentName(String studentName) {
         this.studentName = studentName;
+        return studentName;
     }
 
     public String getEmail() {
@@ -91,4 +92,6 @@ public class storeStudentDetails implements Serializable {
     public void setDept(String dept) {
         this.dept = dept;
     }
+
+
 }
